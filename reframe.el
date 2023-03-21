@@ -2,7 +2,7 @@
 ;; Copyright 2023 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
-;; Version: 1.1
+;; Version: 1.2
 ;; Keywords: convenience, frames
 ;; URL: https://github.com/davep/reframe.el
 ;; Package-Requires: ((emacs "24"))
@@ -33,7 +33,9 @@
   '(((lambda ()
        (and is-a-macOS-window-p (string= (downcase (system-name)) "lucien.local"))) . (100 40 300 110))
     ((lambda ()
-       (and is-a-macOS-window-p (string= (downcase (system-name)) "raven.local"))) . (2590 50 300 95)))
+       (and is-a-macOS-window-p (string= (downcase (system-name)) "raven.local"))) . (2590 50 300 95))
+    ((lambda ()
+       (and is-a-macOS-window-p (string= (downcase (system-name)) "shadow.local"))) . (2590 50 300 95)))
   "List of rules for reframing.")
 
 ;;;###autoload
