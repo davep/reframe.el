@@ -1,8 +1,8 @@
 ;;; reframe.el --- Size/position frames depending where I am -*- lexical-binding: t -*-
-;; Copyright 2023 by Dave Pearson <davep@davep.org>
+;; Copyright 2023-2024 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
-;; Version: 1.3
+;; Version: 1.4
 ;; Keywords: convenience, frames
 ;; URL: https://github.com/davep/reframe.el
 ;; Package-Requires: ((emacs "24"))
@@ -33,7 +33,7 @@
   '(((lambda ()
        (and is-a-macOS-window-p (string= (downcase (system-name)) "lucien.local"))) . (80 40 297 116))
     ((lambda ()
-       (and is-a-macOS-window-p (string= (downcase (system-name)) "raven.local"))) . (2590 50 300 95))
+       (and is-a-macOS-window-p (string= (downcase (system-name)) "raven.local"))) . (80 40 297 116))
     ((lambda ()
        (and is-a-macOS-window-p (string= (downcase (system-name)) "shadow.local"))) . (2590 50 300 95)))
   "List of rules for reframing.")
