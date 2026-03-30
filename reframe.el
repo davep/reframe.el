@@ -2,7 +2,7 @@
 ;; Copyright 2023-2026 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
-;; Version: 1.6
+;; Version: 1.7
 ;; Keywords: convenience, frames
 ;; URL: https://github.com/davep/reframe.el
 ;; Package-Requires: ((emacs "24"))
@@ -29,17 +29,25 @@
 
 (require 'is-a)
 
+(defun reframe--hostname ()
+  "Return the hostname of the current machine, or nil if it cannot be determined."
+  (downcase (car (string-split (system-name) "\\."))))
+
+(defun reframe--on-p (host)
+  "Return non-nil if the current machine's hostname matches HOST."
+  (string= (reframe--hostname) host))
+
 (defconst reframe-rules
   '(((lambda ()
-       (and is-a-macOS-window-p (string= (downcase (system-name)) "lucien.local"))) . (80 40 297 116))
+       (and is-a-macOS-window-p (reframe--on-p "lucien"))) . (80 40 297 116))
     ((lambda ()
-       (and is-a-macOS-window-p (string= (downcase (system-name)) "raven.local"))) . (80 40 297 116))
+       (and is-a-macOS-window-p (reframe--on-p "raven"))) . (80 40 297 116))
     ((lambda ()
-       (and is-a-macOS-window-p (string= (downcase (system-name)) "higgs.local"))) . (80 40 297 116))
+       (and is-a-macOS-window-p (reframe--on-p "higgs"))) . (80 40 297 116))
     ((lambda ()
-       (and is-a-macOS-window-p (string= (downcase (system-name)) "shadow.local"))) . (2590 50 300 95))
+       (and is-a-macOS-window-p (reframe--on-p "shadow"))) . (2590 50 300 95))
     ((lambda ()
-       (and is-a-macOS-window-p (string= (downcase (system-name)) "fragile.local"))) . (72 43 206 76)))
+       (and is-a-macOS-window-p (reframe--on-p "fragile"))) . (72 43 206 76)))
   "List of rules for reframing.")
 
 ;;;###autoload
